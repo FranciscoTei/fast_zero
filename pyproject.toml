@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.12.*"
 fastapi = "^0.111.0"
+pydantic = {extras = ["email"], version = "^2.7.4"}
 
 [tool.taskipy.tasks]
 run = 'fastapi dev fast_zero/app.py'
@@ -15,7 +16,7 @@ pre_test = 'task lint'
 test = 'pytest -s -x --cov=fast_zero -vv'
 post_test = 'coverage html'
 lint = 'ruff check . && ruff check . --diff'
-format = 'ruff check . --fix && ruff format .'
+format = 'ruff format .'
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.4.10"
