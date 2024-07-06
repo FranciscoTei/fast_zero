@@ -12,14 +12,18 @@ pydantic = {extras = ["email"], version = "^2.7.4"}
 sqlalchemy = "^2.0.31"
 pydantic-settings = "^2.3.4"
 alembic = "^1.13.2"
+pwdlib = {extras = ["argon2"], version = "^0.2.0"}
+python-multipart = "^0.0.9"
+pyjwt = "^2.8.0"
+tzdata = "^2024.1"
 
 [tool.taskipy.tasks]
 run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task lint'
-test = 'pytest -s -x --cov=fast_zero -vv'
+test = 'pytest -s --cov=fast_zero -vv'
 post_test = 'coverage html'
 lint = 'ruff check . && ruff check . --diff'
-format = 'ruff format .'
+format = 'ruff check . --fix && ruff format .'
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.4.10"
